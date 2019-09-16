@@ -1,0 +1,170 @@
+@font-face {
+  font-family: "Random Regular";
+  src: url("/Random-Regular.e4e6e502.eot?#iefix") format("embedded-opentype"), url("/Random-Regular.62cf0d47.woff2") format("woff"), url("/Random-Regular.57112ef2.woff") format("woff"), url("/Random-Regular.ce302573.otf") format("opentype");
+  font-style: normal; }
+
+:root {
+  --grey: rgb(191, 191, 191); }
+
+html {
+  font-size: 40px;
+  line-height: 1.2931578947em;
+  letter-spacing: 0.01em;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Random Regular', 'sans-serif';
+  font-weight: lighter;
+  font-kerning: normal;
+  font-feature-settings: 'kern'; }
+
+body {
+  background-color: var(--grey); }
+
+head,
+meta,
+title,
+link {
+  display: block; }
+
+*[id] {
+  --id: ' id="' attr(id) '"'; }
+
+*:not([id]),
+*[id=''] {
+  --id: ''; }
+
+*[class] {
+  --class: ' class="' attr(class) '"'; }
+
+*:not([class]),
+*[class=''] {
+  --class: ''; }
+
+*[src] {
+  --src: ' src="' attr(src) '"'; }
+
+*:not([src]),
+*[src=''] {
+  --src: ''; }
+
+*[href] {
+  --href: ' href="' attr(href) '"'; }
+
+*:not([href]),
+*[href=''] {
+  --href: ''; }
+
+head {
+  display: block;
+  margin-left: 20px; }
+  head::before {
+    content: "<head"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  head::after {
+    content: "</head>"; }
+
+title {
+  display: block;
+  margin-left: 20px; }
+  title::before {
+    content: "<title"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  title::after {
+    content: "</title>"; }
+
+script {
+  display: block;
+  margin-left: 20px; }
+  script::before {
+    content: "<script"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  script::after {
+    content: "</script>"; }
+
+article {
+  display: block;
+  margin-left: 20px; }
+  article::before {
+    content: "<article"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  article::after {
+    content: "</article>"; }
+
+div {
+  display: block;
+  margin-left: 20px; }
+  div::before {
+    content: "<div"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  div::after {
+    content: "</div>"; }
+
+ul {
+  display: block;
+  margin-left: 20px; }
+  ul::before {
+    content: "<ul"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  ul::after {
+    content: "</ul>"; }
+
+li {
+  display: block;
+  margin-left: 20px; }
+  li::before {
+    content: "<li"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  li::after {
+    content: "</li>"; }
+
+body {
+  display: block;
+  margin-left: 20px; }
+  body::before {
+    content: "<body"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  body::after {
+    content: "</body>"; }
+
+header {
+  display: block;
+  margin-left: 20px; }
+  header::before {
+    content: "<header"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  header::after {
+    content: "</header>"; }
+
+a {
+  display: block;
+  margin-left: 20px; }
+  a::before {
+    content: "<a"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  a::after {
+    content: "</a>"; }
+
+p {
+  display: block;
+  margin-left: 20px; }
+  p::before {
+    content: "<p"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
+  p::after {
+    content: "</p>"; }
+
+meta {
+  display: block;
+  margin-left: 20px; }
+
+link {
+  display: block;
+  margin-left: 20px; }
+
+img {
+  display: block;
+  margin-left: 20px; }
+
+meta::before {
+  content: '<meta charset="' attr(charset) '" />'; }
+
+link::before {
+  content: '<link rel="' attr(rel) '" />'; }
+
+.details {
+  display: flex;
+  flex-direction: column; }
+  .details p {
+    margin-top: 0;
+    margin-bottom: 0; }
+
+
+/*# sourceMappingURL=/random-github-page.e31bb0bc.css.map */

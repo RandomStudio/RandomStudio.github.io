@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/styles.scss","src/Project/Project.scss"],"names":[],"mappings":"AAAA,KAAK,CAAC;EACJ,MAAM,CAAA,mBAAC,GACR;;AAED,IAAI,CAAC;EACH,gBAAgB,EAAE,WAAW,GAC9B;;ACND","file":"index.css","sourceRoot":"..","sourcesContent":[":root {\n  --grey: rgb(191, 191, 191);\n}\n\nbody {\n  background-color: var(--grey);\n}\n",""]}

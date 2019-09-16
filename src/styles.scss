@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "Random Regular";
+  src: url("../static/fonts/Random-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../static/fonts/Random-Regular.woff2") format("woff"),
+    url("../static/fonts/Random-Regular.woff") format("woff"),
+    url("../static/fonts/Random-Regular.otf") format("opentype");
+  font-style: normal;
+}
+
+:root {
+  --grey: rgb(191, 191, 191);
+}
+
+html {
+  font-size: 40px;
+  line-height: 1.2931578947em;
+  letter-spacing: 0.01em;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Random Regular', 'sans-serif';
+  font-weight: lighter;
+  font-kerning: normal;
+  font-feature-settings: 'kern';
+}
+
+body {
+  background-color: var(--grey);
+}
+
+head,
+meta,
+title,
+link {
+  display: block;
+}
+
+$tags: 'head', 'title', 'script', 'article', 'div', 'ul', 'li', 'body', 'header', 'a', 'p';
+$selfClosing: 'meta', 'link', 'img';
+
+$attrs: 'id', 'class', 'src', 'href';
+
+
+@each $attr in $attrs {
+  *[#{$attr}] {
+    --#{$attr}: ' #{$attr}="' attr(#{$attr}) '"';
+  }
+  *:not([#{$attr}]),
+  *[#{$attr}=''] {
+    --#{$attr}: '';
+  }
+}
+
+@mixin shared {
+  display: block;
+  margin-left: 20px;
+}
+
+@each $tag in $tags {
+  #{$tag} {
+    @include shared;
+
+    $vars: '';
+    @each $attr in $attrs {
+      $vars: #{$vars}  var(--#{$attr}, '');
+    }
+    &::before {
+      content: '<#{$tag}' #{$vars} '>';
+    }
+
+    &::after {
+      content: '</#{$tag}>';
+    }
+  }
+}
+
+@each $tag in $selfClosing {
+  #{$tag} {
+    @include shared;
+  }
+}
+
+meta::before {
+  content: '<meta charset="' attr(charset) '" />';
+}
+
+link::before {
+  content: '<link rel="' attr(rel) '" />';
+}
