@@ -31426,14 +31426,83 @@ exports.default = void 0;
 
 require("./Project.scss");
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Project = function Project(_ref) {
-  var project = _ref.project;
-  return _react.default.createElement("article", null, _react.default.createElement("main", null), _react.default.createElement("header", {
-    class: "details"
+  var iss = _ref.iss,
+      project = _ref.project;
+
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      points = _useState2[0],
+      setPoints = _useState2[1];
+
+  var canvasRef = (0, _react.useRef)(null);
+  (0, _react.useEffect)(function () {
+    if (!project || !iss) {
+      return;
+    }
+
+    var upperBound = Math.pow(10, project.size.toString().length);
+    var a = (upperBound - project.size) / upperBound;
+    var b = iss.latitude / 90;
+    var c = iss.longitude / 180;
+    var d = iss.solar_lat / 90;
+    var e = iss.solar_lon / 360;
+    setPoints([a, b, c, d, e]);
+  }, [iss, project]);
+  (0, _react.useEffect)(function () {
+    if (canvasRef.current && points.length > 0) {
+      var _points = _slicedToArray(points, 5),
+          a = _points[0],
+          b = _points[1],
+          c = _points[2],
+          d = _points[3],
+          e = _points[4];
+
+      var width = canvasRef.current.clientWidth * (window.devicePixelRatio || 1);
+      var height = canvasRef.current.clientHeight * (window.devicePixelRatio || 1);
+      canvasRef.current.width = width;
+      canvasRef.current.height = height;
+      var ctx = canvasRef.current.getContext('2d');
+      ctx.fillStyle = 'rgba(0,0,0,0.7)';
+      ctx.beginPath();
+      ctx.moveTo(a * width, a * height);
+      var sets = [[b, c], [e, d], [c, e], [c, e], [d, b], [c, c]];
+      sets.forEach(function (_ref2) {
+        var _ref3 = _slicedToArray(_ref2, 2),
+            x = _ref3[0],
+            y = _ref3[1];
+
+        ctx.lineTo(x * width * Math.random(), y * height * Math.random());
+        console.log(x * width * Math.random(), y * height * Math.random());
+      });
+      ctx.lineTo(a * width, a * height);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }, [points]);
+  return _react.default.createElement("article", null, _react.default.createElement("main", {
+    className: "shape"
+  }, _react.default.createElement("canvas", {
+    className: "canvas",
+    ref: canvasRef
+  }), _react.default.createElement("div", {
+    className: "seeds"
+  }, _react.default.createElement("p", null, "200mb"), _react.default.createElement("p", null, "20 files"), _react.default.createElement("p", null, "Weather: LDN"), _react.default.createElement("p", null, "Noise: Outside"))), _react.default.createElement("header", {
+    className: "details"
   }, _react.default.createElement("a", {
     href: project.html_url
   }, project.name), _react.default.createElement("p", null, project.pushed_at)));
@@ -31476,8 +31545,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      projects = _useState2[0],
-      setProjects = _useState2[1];
+      iss = _useState2[0],
+      setISS = _useState2[1];
 
   var _useState3 = (0, _react.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -31491,7 +31560,7 @@ var App = function App() {
       var _ref = _asyncToGenerator(
       /*#__PURE__*/
       regeneratorRuntime.mark(function _callee() {
-        var target, response;
+        var target, response, repos, timestamps, sat_response;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -31507,15 +31576,29 @@ var App = function App() {
 
               case 3:
                 response = _context.sent;
-                _context.t0 = setRepos;
-                _context.next = 7;
+                _context.next = 6;
                 return response.json();
 
-              case 7:
+              case 6:
+                repos = _context.sent;
+                setRepos(repos);
+                timestamps = repos.slice(0, 9).map(function (r) {
+                  return Date.parse(r.pushed_at) / 1000;
+                });
+                _context.next = 11;
+                return fetch("https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps=".concat(timestamps, "&units=miles"));
+
+              case 11:
+                sat_response = _context.sent;
+                _context.t0 = setISS;
+                _context.next = 15;
+                return sat_response.json();
+
+              case 15:
                 _context.t1 = _context.sent;
                 (0, _context.t0)(_context.t1);
 
-              case 9:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -31530,46 +31613,9 @@ var App = function App() {
 
     getRepos();
   }, []);
-  (0, _react.useEffect)(function () {
-    var getProjects =
-    /*#__PURE__*/
-    function () {
-      var _ref2 = _asyncToGenerator(
-      /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2(repo) {
-        var response;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return fetch('https://api.github.com/orgs/randomstudio/repos', {
-                  headers: new Headers({
-                    'Accept': 'application/vnd.github.baptiste-preview+json'
-                  })
-                });
-
-              case 2:
-                response = _context2.sent;
-
-              case 3:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      return function getProjects(_x) {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-
-    if (repos.length > 0) {// setProjects(repos.map(async repo => getProjects(repo)));
-    }
-  }, [repos]);
-  return _react.default.createElement(_react.default.Fragment, null, repos.map(function (project) {
+  return _react.default.createElement(_react.default.Fragment, null, repos.map(function (project, i) {
     return _react.default.createElement(_Project.default, {
+      iss: iss[i],
       key: project.id,
       project: project
     });
