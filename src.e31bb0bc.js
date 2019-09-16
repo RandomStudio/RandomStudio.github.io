@@ -31339,7 +31339,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -31371,7 +31371,7 @@ function getBaseURL(url) {
 
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
-},{}],"../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -31406,17 +31406,17 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/styles.scss":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/styles.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Project/Project.scss":[function(require,module,exports) {
+},{"./../static/fonts/Random-Regular.eot":[["Random-Regular.e4e6e502.eot","static/fonts/Random-Regular.eot"],"static/fonts/Random-Regular.eot"],"./../static/fonts/Random-Regular.woff2":[["Random-Regular.62cf0d47.woff2","static/fonts/Random-Regular.woff2"],"static/fonts/Random-Regular.woff2"],"./../static/fonts/Random-Regular.woff":[["Random-Regular.57112ef2.woff","static/fonts/Random-Regular.woff"],"static/fonts/Random-Regular.woff"],"./../static/fonts/Random-Regular.otf":[["Random-Regular.ce302573.otf","static/fonts/Random-Regular.otf"],"static/fonts/Random-Regular.otf"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Project/Project.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Project/Project.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Project/Project.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31431,8 +31431,12 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Project = function Project(_ref) {
-  var repo = _ref.repo;
-  return _react.default.createElement("li", null, _react.default.createElement("div", null, repo.name), _react.default.createElement("div", null, repo.has_pages), _react.default.createElement("div", null, repo.pushed_at));
+  var project = _ref.project;
+  return _react.default.createElement("article", null, _react.default.createElement("main", null), _react.default.createElement("header", {
+    class: "details"
+  }, _react.default.createElement("a", {
+    href: project.html_url
+  }, project.name), _react.default.createElement("p", null, project.pushed_at)));
 };
 
 var _default = Project;
@@ -31453,7 +31457,9 @@ var _Project = _interopRequireDefault(require("./Project/Project"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -31463,7 +31469,7 @@ function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArra
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -31494,7 +31500,8 @@ var App = function App() {
                 _context.next = 3;
                 return fetch('https://api.github.com/orgs/randomstudio/repos', {
                   headers: new Headers({
-                    'Accept': 'application/vnd.github.baptiste-preview+json'
+                    'Accept': 'application/vnd.github.baptiste-preview+json',
+                    'Authorization': 'token 960e1ca5a51783cae1906a1c609f260c6cff884e'
                   })
                 });
 
@@ -31558,37 +31565,13 @@ var App = function App() {
       };
     }();
 
-    if (repos.length > 0) {
-      setProjects(repos.map(
-      /*#__PURE__*/
-      function () {
-        var _ref3 = _asyncToGenerator(
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee3(repo) {
-          return regeneratorRuntime.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  return _context3.abrupt("return", getProjects(repo));
-
-                case 1:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3);
-        }));
-
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
-        };
-      }()));
+    if (repos.length > 0) {// setProjects(repos.map(async repo => getProjects(repo)));
     }
   }, [repos]);
-  return _react.default.createElement(_react.default.Fragment, null, projects.map(function (project) {
+  return _react.default.createElement(_react.default.Fragment, null, repos.map(function (project) {
     return _react.default.createElement(_Project.default, {
       key: project.id,
-      data: data
+      project: project
     });
   }));
 };
@@ -31609,7 +31592,7 @@ var _App = _interopRequireDefault(require("./src/App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('app'));
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./src/App":"src/App.js"}],"../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./src/App":"src/App.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31637,7 +31620,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52264" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64453" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -31812,5 +31795,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../.nvm/versions/node/v10.15.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/index.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+//# sourceMappingURL=/src.e31bb0bc.js.map
