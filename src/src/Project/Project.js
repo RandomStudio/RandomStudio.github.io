@@ -57,8 +57,7 @@ const Project = ({ iss, project }) => {
         <div className="seeds">
           <p>200mb</p>
           <p>20 files</p>
-          <p>Weather: LDN</p>
-          <p>Noise: Outside</p>
+          <p>Satellite: ISS</p>
         </div>
       </main>
       <header className="details">

@@ -165,7 +165,10 @@ meta::before {
   content: '<meta charset="' attr(charset) '" />'; }
 
 link::before {
-  content: '<link rel="' attr(rel) '" />'; }
+  content: '<link rel="' attr(rel) '" href="' attr(href) '" />'; }
+
+script::before {
+  content: '<script defer src="' attr(src) '" />'; }
 
 p {
   margin-top: 0;
