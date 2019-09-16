@@ -31494,7 +31494,9 @@ var Project = function Project(_ref) {
       ctx.fill();
     }
   }, [points]);
-  return _react.default.createElement("article", null, _react.default.createElement("main", {
+  return _react.default.createElement("article", {
+    className: "item"
+  }, _react.default.createElement("main", {
     className: "shape"
   }, _react.default.createElement("canvas", {
     className: "canvas",
@@ -31505,7 +31507,7 @@ var Project = function Project(_ref) {
     className: "details"
   }, _react.default.createElement("a", {
     href: project.html_url
-  }, project.name), _react.default.createElement("p", null, project.pushed_at)));
+  }, project.name), _react.default.createElement("p", null, project.pushed_at), _react.default.createElement("p", null, project.description)));
 };
 
 var _default = Project;

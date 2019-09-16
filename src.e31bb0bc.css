@@ -77,14 +77,6 @@ script {
   script::after {
     content: "</script>"; }
 
-article {
-  display: block;
-  margin-left: 1em; }
-  article::before {
-    content: "<article"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
-  article::after {
-    content: "</article>"; }
-
 div {
   display: block;
   margin-left: 1em; }
@@ -116,14 +108,6 @@ body {
     content: "<body"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
   body::after {
     content: "</body>"; }
-
-main {
-  display: block;
-  margin-left: 1em; }
-  main::before {
-    content: "<main"  var(--id, "") var(--class, "") var(--src, "") var(--href, "") ">"; }
-  main::after {
-    content: "</main>"; }
 
 header {
   display: block;
@@ -174,12 +158,15 @@ p {
   margin-top: 0;
   margin-bottom: 0; }
 
+.item {
+  margin-bottom: 2em; }
+
 .shape {
   position: relative;
   background-color: rgba(0, 0, 0, 0.05);
   width: 50vw;
   height: 30vw;
-  margin: 1.5em 0 1.5em 2em; }
+  margin: 1.5em 0 0.5em 2em; }
   .shape::before {
     position: relative;
     top: -1.5em;

@@ -33,7 +33,7 @@ link {
   display: block;
 }
 
-$tags: 'head', 'title', 'script', 'article', 'div', 'ul', 'li', 'body', 'main', 'header', 'a', 'p';
+$tags: 'head', 'title', 'script', 'div', 'ul', 'li', 'body', 'header', 'a', 'p';
 $selfClosing: 'meta', 'link', 'img';
 
 $attrs: 'id', 'class', 'src', 'href';

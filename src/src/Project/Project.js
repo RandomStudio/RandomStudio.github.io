@@ -51,7 +51,7 @@ const Project = ({ iss, project }) => {
   }, [points])
 
   return (
-    <article>
+    <article className="item">
       <main className="shape">
         <canvas className="canvas" ref={canvasRef}></canvas>
         <div className="seeds">
@@ -62,6 +62,7 @@ const Project = ({ iss, project }) => {
       <header className="details">
         <a href={project.html_url}>{project.name}</a>
         <p>{project.pushed_at}</p>
+        <p>{project.description}</p>
       </header>
     </article>
   );
