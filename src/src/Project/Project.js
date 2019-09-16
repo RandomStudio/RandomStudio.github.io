@@ -55,8 +55,7 @@ const Project = ({ iss, project }) => {
       <main className="shape">
         <canvas className="canvas" ref={canvasRef}></canvas>
         <div className="seeds">
-          <p>200mb</p>
-          <p>20 files</p>
+          <p>Size: {(project.size / 1000).toFixed(2)}MB</p>
           <p>Satellite: ISS</p>
         </div>
       </main>

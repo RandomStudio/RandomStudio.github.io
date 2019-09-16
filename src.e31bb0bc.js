@@ -31501,7 +31501,7 @@ var Project = function Project(_ref) {
     ref: canvasRef
   }), _react.default.createElement("div", {
     className: "seeds"
-  }, _react.default.createElement("p", null, "200mb"), _react.default.createElement("p", null, "20 files"), _react.default.createElement("p", null, "Satellite: ISS"))), _react.default.createElement("header", {
+  }, _react.default.createElement("p", null, "Size: ", (project.size / 1000).toFixed(2), "MB"), _react.default.createElement("p", null, "Satellite: ISS"))), _react.default.createElement("header", {
     className: "details"
   }, _react.default.createElement("a", {
     href: project.html_url
